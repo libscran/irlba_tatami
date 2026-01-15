@@ -1,0 +1,24 @@
+<map id="irlba_tatami/irlba_tatami.hpp" name="irlba_tatami/irlba_tatami.hpp">
+<area shape="rect" id="Node000001" title="Wrap tatami for irlba." alt="" coords="309,5,425,46"/>
+<area shape="rect" id="Node000002" href="$normal_8hpp.html" title="Wrap a tatami matrix." alt="" coords="386,94,470,120"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="384,45,412,80,407,83,380,48"/>
+<area shape="rect" id="Node000009" href="$transposed_8hpp.html" title="Wrap a transposed tatami matrix." alt="" coords="252,94,362,120"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="354,48,328,83,323,80,350,45"/>
+<area shape="rect" id="Node000003" href="/github/workspace/docs/tatami.tag$tatami_8hpp.html" title=" " alt="" coords="97,175,218,201"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="387,123,215,173,213,168,386,118"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="242,168,372,208"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="411,122,351,162,348,157,408,118"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="396,175,493,201"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="433,120,441,159,436,160,428,121"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="517,175,668,201"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="455,118,555,166,552,171,452,123"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,175,73,201"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="387,120,374,122,293,135,229,142,166,151,86,170,81,172,79,167,85,165,165,146,228,137,292,130,373,117,385,115"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="692,175,773,201"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="472,114,568,135,681,165,688,167,686,172,680,170,567,140,471,119"/>
+<area shape="poly" id="edge9_Node000009_Node000003" title=" " alt="" coords="286,122,195,170,193,165,283,118"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="310,120,310,152,304,152,304,120"/>
+<area shape="poly" id="edge11_Node000009_Node000005" title=" " alt="" coords="329,118,411,165,409,169,327,122"/>
+<area shape="poly" id="edge12_Node000009_Node000006" title=" " alt="" coords="352,118,534,168,533,173,350,123"/>
+<area shape="poly" id="edge13_Node000009_Node000007" title=" " alt="" coords="255,123,175,143,86,170,82,172,80,167,85,165,174,138,254,118"/>
+</map>
