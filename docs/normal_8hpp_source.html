@@ -105,7 +105,7 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="codeRef" href="https://tatami-inc.github.io/tatami/tatami_8hpp.html">tatami/tatami.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;tatami_mult/tatami_mult.hpp&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;irlba/irlba.hpp&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="codeRef" href="https://libscran.github.io/irlba/irlba_8hpp.html">irlba/irlba.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;sanisizer/sanisizer.hpp&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
@@ -117,16 +117,16 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">class </span>NormalWorkspace final : <span class="keyword">public</span> <a class="code hl_classRef" href="https://libscran.github.io/irlba/classirlba_1_1Workspace.html">irlba::Workspace</a>&lt;EigenVector_&gt; {</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    NormalWorkspace(<span class="keyword">const</span> TMatrix_&amp; mat, <span class="keywordtype">int</span> num_threads) : my_mat(mat) {</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        opt.num_threads = num_threads;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        tatami_mult::set_num_threads(opt, num_threads);</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">const</span> TMatrix_&amp; my_mat;</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    tatami_mult::Options opt;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    tatami_mult::MultiplyWithSingleVectorOptions opt;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> multiply(<span class="keyword">const</span> EigenVector_&amp; right, EigenVector_&amp; out) {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        tatami_mult::multiply(my_mat, right.data(), out.data(), opt);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        tatami_mult::multiply_with_single_vector(my_mat, right.data(), out.data(), opt);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
@@ -134,16 +134,16 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">class </span>NormalAdjointWorkspace final : <span class="keyword">public</span> <a class="code hl_classRef" href="https://libscran.github.io/irlba/classirlba_1_1AdjointWorkspace.html">irlba::AdjointWorkspace</a>&lt;EigenVector_&gt; {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    NormalAdjointWorkspace(<span class="keyword">const</span> TMatrix_&amp; mat, <span class="keywordtype">int</span> num_threads) : my_mat(mat) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        opt.num_threads = num_threads;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        tatami_mult::set_num_threads(opt, num_threads);</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    }</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">const</span> TMatrix_&amp; my_mat;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    tatami_mult::Options opt;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    tatami_mult::MultiplyWithSingleVectorOptions opt;</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span><span class="keyword">public</span>:</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordtype">void</span> multiply(<span class="keyword">const</span> EigenVector_&amp; right, EigenVector_&amp; out) {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        tatami_mult::multiply(right.data(), my_mat, out.data(), opt);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        tatami_mult::multiply_with_single_vector(right.data(), my_mat, out.data(), opt);</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>};</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
@@ -249,6 +249,7 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclassirlba__tatami_1_1Normal_html_a400a61c34872d21f37ce58f65583d62b"><div class="ttname"><a href="classirlba__tatami_1_1Normal.html#a400a61c34872d21f37ce58f65583d62b">irlba_tatami::Normal::Normal</a></div><div class="ttdeci">Normal(TMatrixPointer_ mat, int num_threads)</div><div class="ttdef"><b>Definition</b> normal.hpp:111</div></div>
 <div class="ttc" id="aclassirlba__tatami_1_1Normal_html_a6f372b5a6fa2aa87b1643a225f257cf7"><div class="ttname"><a href="classirlba__tatami_1_1Normal.html#a6f372b5a6fa2aa87b1643a225f257cf7">irlba_tatami::Normal::new_known_realize_workspace</a></div><div class="ttdeci">auto new_known_realize_workspace() const</div><div class="ttdef"><b>Definition</b> normal.hpp:163</div></div>
 <div class="ttc" id="aclassirlba__tatami_1_1Normal_html_ad8741ef4ec256f858b2fbdd81a62ebd7"><div class="ttname"><a href="classirlba__tatami_1_1Normal.html#ad8741ef4ec256f858b2fbdd81a62ebd7">irlba_tatami::Normal::new_known_workspace</a></div><div class="ttdeci">auto new_known_workspace() const</div><div class="ttdef"><b>Definition</b> normal.hpp:149</div></div>
+<div class="ttc" id="airlba_8hpp_html"><div class="ttname"><a href="https://libscran.github.io/irlba/irlba_8hpp.html">irlba.hpp</a></div></div>
 <div class="ttc" id="anamespaceirlba__tatami_html"><div class="ttname"><a href="namespaceirlba__tatami.html">irlba_tatami</a></div><div class="ttdoc">Wrap tatami for irlba.</div></div>
 <div class="ttc" id="anamespacetatami_html_ac5f5ff476ecb172e59c3535cedb966cd"><div class="ttname"><a href="https://tatami-inc.github.io/tatami/namespacetatami.html#ac5f5ff476ecb172e59c3535cedb966cd">tatami::convert_to_dense</a></div><div class="ttdeci">void convert_to_dense(const Matrix&lt; InputValue_, InputIndex_ &gt; &amp;matrix, const bool row_major, StoredValue_ *const store, const ConvertToDenseOptions &amp;options)</div></div>
 <div class="ttc" id="atatami_8hpp_html"><div class="ttname"><a href="https://tatami-inc.github.io/tatami/tatami_8hpp.html">tatami.hpp</a></div></div>

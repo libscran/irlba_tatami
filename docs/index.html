@@ -109,14 +109,15 @@ $(function(){ initResizable(false); });
 <div class="line"> </div>
 <div class="line"><span class="comment">// Wrap it for use in IRLBA.</span></div>
 <div class="line"><a class="code hl_class" href="classirlba__tatami_1_1Normal.html">irlba_tatami::Normal&lt;Eigen::VectorXd, Eigen::MatrixXd, double, int&gt;</a> wrapped(std::move(tmat));</div>
-<div class="line"><span class="keyword">auto</span> res = irlba::compute(wrapper, 5, <a class="code hl_structRef" href="https://libscran.github.io/irlba/structirlba_1_1Options.html">irlba::Options</a>());</div>
+<div class="line"><span class="keyword">auto</span> res = <a class="code hl_functionRef" href="https://libscran.github.io/irlba/namespaceirlba.html#a3ef50b4731ec01ea6a1a035e4863390b">irlba::compute</a>(wrapper, 5, <a class="code hl_structRef" href="https://libscran.github.io/irlba/structirlba_1_1Options.html">irlba::Options</a>());</div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Performing IRLBA on a column-centered matrix.</span></div>
 <div class="line">Eigen::VectorXd centers; <span class="comment">// Fill column centers here...</span></div>
 <div class="line">CenteredMatrix&lt;Eigen::VectorXd, Eigen::MatrixXd&gt; centered(&amp;wrapped, &amp;centers);</div>
-<div class="line"><span class="keyword">auto</span> centered_res = irlba::compute(centered, 5, <a class="code hl_structRef" href="https://libscran.github.io/irlba/structirlba_1_1Options.html">irlba::Options</a>());</div>
+<div class="line"><span class="keyword">auto</span> centered_res = <a class="code hl_functionRef" href="https://libscran.github.io/irlba/namespaceirlba.html#a3ef50b4731ec01ea6a1a035e4863390b">irlba::compute</a>(centered, 5, <a class="code hl_structRef" href="https://libscran.github.io/irlba/structirlba_1_1Options.html">irlba::Options</a>());</div>
 <div class="ttc" id="aclassirlba__tatami_1_1Normal_html"><div class="ttname"><a href="classirlba__tatami_1_1Normal.html">irlba_tatami::Normal</a></div><div class="ttdoc">Wrap a tatami matrix for irlba.</div><div class="ttdef"><b>Definition</b> normal.hpp:104</div></div>
 <div class="ttc" id="airlba__tatami_8hpp_html"><div class="ttname"><a href="irlba__tatami_8hpp.html">irlba_tatami.hpp</a></div><div class="ttdoc">Wrap tatami for irlba.</div></div>
+<div class="ttc" id="anamespaceirlba_html_a3ef50b4731ec01ea6a1a035e4863390b"><div class="ttname"><a href="https://libscran.github.io/irlba/namespaceirlba.html#a3ef50b4731ec01ea6a1a035e4863390b">irlba::compute</a></div><div class="ttdeci">Metrics compute(const Matrix_ &amp;matrix, const Eigen::Index number, EigenMatrix_ &amp;outU, EigenMatrix_ &amp;outV, EigenVector_ &amp;outD, const Options&lt; EigenVector_ &gt; &amp;options)</div></div>
 <div class="ttc" id="astructirlba_1_1Options_html"><div class="ttname"><a href="https://libscran.github.io/irlba/structirlba_1_1Options.html">irlba::Options</a></div></div>
 </div><!-- fragment --><p>See the <a href="https://libscran.github.io/irlba_tatami">reference documentation</a> for more details.</p>
 <h1>Building projects</h1>
