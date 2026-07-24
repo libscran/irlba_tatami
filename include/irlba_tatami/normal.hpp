@@ -23,16 +23,16 @@ template<class EigenVector_, typename TValue_, typename TIndex_, class TMatrix_ 
 class NormalWorkspace final : public irlba::Workspace<EigenVector_> {
 public:
     NormalWorkspace(const TMatrix_& mat, int num_threads) : my_mat(mat) {
-        opt.num_threads = num_threads;
+        tatami_mult::set_num_threads(opt, num_threads);
     }
 
 private:
     const TMatrix_& my_mat;
-    tatami_mult::Options opt;
+    tatami_mult::MultiplyWithSingleVectorOptions opt;
 
 public:
     void multiply(const EigenVector_& right, EigenVector_& out) {
-        tatami_mult::multiply(my_mat, right.data(), out.data(), opt);
+        tatami_mult::multiply_with_single_vector(my_mat, right.data(), out.data(), opt);
     }
 };
 
@@ -40,16 +40,16 @@ template<class EigenVector_, typename TValue_, typename TIndex_, class TMatrix_ 
 class NormalAdjointWorkspace final : public irlba::AdjointWorkspace<EigenVector_> {
 public:
     NormalAdjointWorkspace(const TMatrix_& mat, int num_threads) : my_mat(mat) {
-        opt.num_threads = num_threads;
+        tatami_mult::set_num_threads(opt, num_threads);
     }
 
 private:
     const TMatrix_& my_mat;
-    tatami_mult::Options opt;
+    tatami_mult::MultiplyWithSingleVectorOptions opt;
 
 public:
     void multiply(const EigenVector_& right, EigenVector_& out) {
-        tatami_mult::multiply(right.data(), my_mat, out.data(), opt);
+        tatami_mult::multiply_with_single_vector(right.data(), my_mat, out.data(), opt);
     }
 };
 
