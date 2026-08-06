@@ -95,9 +95,9 @@ public:
  * @tparam TMatrixPointer_ Pointer to a **tatami** matrix class consistent with `TValue_` and `TIndex_`. 
  * This may be a raw or smart pointer.
  *
- * This class computes the matrix-vector product for a transposed `tatami::Matrix` or one of its subclasses.
- * The aim is to avoid realizing a `tatami::Matrix` into an `Eigen::Matrix` or `irlba::ParallelSparseMatrix` for use in `irlba::compute()`.
- * Iteration over a `tatami::Matrix` is generally slower, as this effectively trades speed for memory efficiency.
+ * This class wraps the transpose of a `tatami::Matrix` (or one of its subclasses) for use in `irlba::compute()`.
+ * It is equivalent to wrapping the `tatami::Matrix` in a `tatami::DelayedTranspose` and wrapping it in a `Normal`,
+ * but is slightly more efficient as it avoids the additional virtual dispatch.
  */
 template<class EigenVector_, class EigenMatrix_, typename TValue_, typename TIndex_, class TMatrixPointer_ = std::shared_ptr<const tatami::Matrix<TValue_, TIndex_> > >
 class Transposed final : public irlba::Matrix<EigenVector_, EigenMatrix_> {

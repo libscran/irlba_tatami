@@ -12,22 +12,30 @@ The goal is to support IRLBA on alternative matrix representations (e.g., sparse
 ## Quick start
 
 Not much to say, really. 
-Just pass a `irlba_tatami::Normal` or `irlba_tatami::Transposed` anywhere that an `irlba::Matrix` can be accepted:
+Just wrap a `tatami::Matrix` in an `irlba_tatami::Normal` wrapper, and pass the latter anywhere that an `irlba::Matrix` can be accepted:
 
 ```cpp
 #include "irlba_tatami/irlba_tatami.hpp"
 
 // Initialize this with an instance of a concrete tatami subclass.
-std::shared_ptr<tatami::Matrix<double, int> > tmat;
+std::shared_ptr<tatami::Matrix<double, int> > mat;
 
 // Wrap it for use in IRLBA.
-irlba_tatami::Normal<Eigen::VectorXd, Eigen::MatrixXd, double, int> wrapped(std::move(tmat));
-auto res = irlba::compute(wrapper, 5, irlba::Options());
+irlba_tatami::Normal<Eigen::VectorXd, Eigen::MatrixXd, double, int> wrapped(std::move(mat));
+auto res = irlba::compute(wrapped, 5, irlba::Options());
 
 // Performing IRLBA on a column-centered matrix.
 Eigen::VectorXd centers; // Fill column centers here...
-CenteredMatrix<Eigen::VectorXd, Eigen::MatrixXd> centered(&wrapped, &centers);
+irlba::CenteredMatrix<Eigen::VectorXd, Eigen::MatrixXd> centered(&wrapped, &centers);
 auto centered_res = irlba::compute(centered, 5, irlba::Options());
+```
+
+If we want to perform IRLBA on the transpose of our `tatami::Matrix`, we can wrap it in an `irlba_tatami::Transposed` instead:
+
+```cpp
+// Wrap it for use in IRLBA.
+irlba_tatami::Transposed<Eigen::VectorXd, Eigen::MatrixXd, double, int> twrapped(std::move(mat));
+auto tres = irlba::compute(twrapped, 5, irlba::Options());
 ```
 
 See the [reference documentation](https://libscran.github.io/irlba_tatami) for more details.

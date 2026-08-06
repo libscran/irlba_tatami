@@ -1,9 +1,11 @@
 cmake_minimum_required(VERSION 3.14...3.25)
 
-project(irlba_tatami
-    VERSION 0.1.0
+project(
+    irlba_tatami
+    VERSION 0.1.1
     DESCRIPTION "Wrap tatami matrices for irlba"
-    LANGUAGES CXX)
+    LANGUAGES CXX
+)
 
 include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
