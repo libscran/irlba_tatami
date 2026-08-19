@@ -27,7 +27,7 @@ else()
     find_package(tatami_tatami 4.0.0 CONFIG REQUIRED)
     find_package(tatami_tatami_mult 0.1.0 CONFIG REQUIRED)
     find_package(ltla_irlba 3.0.0 CONFIG REQUIRED)
-    find_package(Eigen3 5.0.0 CONFIG REQUIRED)
+    find_package(Eigen3 5 CONFIG REQUIRED)
     find_package(ltla_sanisizer 0.1.2 CONFIG REQUIRED)
 endif()
 
